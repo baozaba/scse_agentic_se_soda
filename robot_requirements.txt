@@ -1,27 +1,29 @@
 ===== RUN 1 =====
-1. **Process Input Data**: The system must receive and interpret input data indicating whether the path ahead, to the left, and to the right is blocked.  
-2. **Determine Goal Direction**: The system must identify whether the goal is located ahead, to the left, or to the right of the robot.  
-3. **Prioritize Goal Movement**: The robot must attempt to move toward the goal’s direction only if that path is unblocked.  
-4. **Avoid Blocked Directions**: The system must never issue a movement command into a direction that is blocked.  
-5. **Stop When No Safe Path Exists**: If all possible directions (ahead, left, right) are blocked, the robot must stop and remain stationary.  
-6. **Handle Dynamic Environments**: The navigation logic must adapt to changing blocked paths and goal positions during operation.  
-7. **Ensure Safety Over Efficiency**: The system must prioritize avoiding collisions (by respecting blocked directions) over reaching the goal.  
-8. **Support Simulated Testing**: The navigation logic must be compatible with multiple simulated environments, including varying layouts and obstacles.  
-9. **Provide Clear Movement Commands**: The system must output explicit movement instructions (e.g., "move forward," "turn left") based on the current state of blocked paths and goal location.  
-10. **Maintain Continuous Decision-Making**: The robot must continuously reassess its movement options in real time as new input data becomes available.
+1. The robot must prioritize moving toward its goal whenever it can do so safely, based on the direction the goal is located (ahead, left, or right).  
+2. The robot must not move into any direction that is blocked.  
+3. If no safe direction is available (i.e., all directions are blocked or moving toward the goal is not possible), the robot must stop.  
+4. The robot must process and act on real-time input about whether the path in front, to the left, and to the right is blocked.  
+5. The robot must process and act on real-time input about the location of its goal (ahead, left, or right).  
+6. The navigation logic must ensure the robot avoids collisions by checking blocked directions before attempting to move.  
+7. The system must handle scenarios where multiple safe directions exist by selecting the one that aligns with the goal’s direction.  
+8. The robot must remain stationary if all movement options are blocked or unsafe.
 
 ===== RUN 2 =====
-1. The system must receive input indicating whether the path ahead, to the left, and to the right is blocked.  
-2. The system must receive input indicating the direction of the goal (ahead, left, or right).  
-3. The navigation logic must prioritize movement toward the goal whenever it can be done safely.  
-4. The system must prevent movement into any blocked direction.  
-5. If no safe movement directions are available, the robot must stop.
+1. The system must process input indicating whether the path in front, to the left, and to the right is blocked.  
+2. The system must process input indicating the direction of the goal (ahead, to the left, or to the right) relative to the robot's current position.  
+3. The system must prioritize movement toward the goal's direction if it is unblocked (i.e., the path in that direction is not blocked).  
+4. The system must prevent movement into any blocked direction (front, left, or right).  
+5. If no unblocked directions are available, the system must stop the robot immediately.  
+6. The system must handle scenarios where the goal's direction is blocked by selecting the next best available unblocked direction (e.g., prioritizing the goal's direction first, then other directions).  
+7. The system must operate reliably in multiple simulated environments with varying obstacle configurations and goal positions.
 
 ===== RUN 3 =====
-1. The system must receive input indicating whether the path in front, to the left, and to the right is blocked.  
-2. The system must receive input indicating the direction of the goal (ahead, to the left, or to the right).  
-3. The system must prioritize movement toward the goal whenever it can be done safely.  
-4. The system must not allow movement into any blocked direction.  
-5. If no safe movement direction is available, the system must stop the robot.  
-6. The system must be compatible with multiple simulated environments for testing.
+1. The system must receive and process sensor inputs indicating whether the path ahead, to the left, and to the right is blocked.  
+2. The system must receive and process information about the goal's location (ahead, to the left, or to the right).  
+3. The robot must prioritize moving toward the goal's direction (ahead, left, or right) whenever it is safe (i.e., the corresponding path is not blocked).  
+4. The robot must never move into a blocked direction.  
+5. If the goal is ahead and the path is unblocked, the robot must move forward.  
+6. If the goal is to the left or right and the corresponding path is unblocked, the robot must move in that direction.  
+7. If the goal's direction is blocked, the robot must check alternative directions (left or right) for safe movement, prioritizing the goal's direction first.  
+8. If no safe directions are available (all paths blocked), the robot must stop.
 
