@@ -1,0 +1,10 @@
+{
+  "strategy": "Move toward the goal whenever that can be done safely, otherwise turn to an unblocked direction, and stop when none remain.",
+  "decisions": [
+    "move FORWARD toward the goal when the path ahead is clear",
+    "turn LEFT or RIGHT when the goal direction is blocked",
+    "never move into a blocked direction",
+    "STOP when no safe direction is available"
+  ],
+  "stop_condition": "no safe direction is available"
+}
