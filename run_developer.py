@@ -1,5 +1,5 @@
 """Runner: read the validated plan, run the Developer Agent, and save the
-generated Python code as navigation_logic.py.
+generated Python code as generated/navigation_logic.py.
 """
 
 import json
@@ -8,7 +8,7 @@ from pathlib import Path
 from developer_agent import run_developer
 
 PLAN_PATH = Path("artifacts") / "plan.json"
-OUTPUT_PATH = Path("navigation_logic.py")
+OUTPUT_PATH = Path("generated") / "navigation_logic.py"
 
 
 def read_plan(path=PLAN_PATH):
@@ -22,7 +22,8 @@ def main():
     # Call the agent and receive the final validated navigation code.
     code = run_developer(plan)
 
-    # Store the generated code in navigation_logic.py.
+    # Store the generated code in generated/navigation_logic.py.
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with OUTPUT_PATH.open("w", encoding="utf-8") as f:
         f.write(code + "\n")
 
